@@ -1,0 +1,12 @@
+name: torusmc-website
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Deployment/Dockerfile
+    image: torusmc-website:latest
+    restart: unless-stopped
+    # Only reachable from the host itself; Nginx is the public entry point.
+    ports:
+      - "127.0.0.1:3000:3000"
